@@ -1,0 +1,713 @@
+/* public/assets/css/forms.css */
+/* Modais */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    padding: 20px 0;
+}
+
+/* CORREÇÃO CRÍTICA - Garantir que o modal apareça quando aberto */
+.modal[style*="display: block"] {
+    display: block !important;
+}
+
+.modal.show {
+    display: block !important;
+    opacity: 1 !important;
+	visibility: visible !important;
+}
+
+.modal-content {
+    background: var(--color-white);
+    margin: 50px auto;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+/* CORREÇÃO - Garantir que o conteúdo do modal seja visível */
+.modal[style*="display: block"] .modal-content {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+}
+
+.modal-content.small {
+    max-width: 400px;
+}
+
+.modal-content.large {
+    max-width: 800px;
+}
+
+.modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-gray-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-gray);
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--color-black);
+}
+
+.modal-body {
+    padding: 1.5rem;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--color-gray-light);
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    background: var(--color-white);
+    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+}
+
+/* Formulários */
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.form-section h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-black);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-gray-light);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--color-gray-dark);
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 2px solid var(--color-gray-light);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    background: var(--color-white);
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+}
+
+.form-group input:invalid,
+.form-group select:invalid,
+.form-group textarea:invalid {
+    border-color: var(--color-error);
+}
+
+.error-message {
+    color: var(--color-error);
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* Campos de Salário */
+.salary-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.salary-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.salary-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-gray);
+    margin-bottom: 0.5rem;
+}
+
+.currency-input,
+.percentage-input {
+    position: relative;
+}
+
+.currency-input::before {
+    content: 'R$';
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray);
+    font-weight: 600;
+    z-index: 1;
+}
+
+.currency-input input {
+    padding-left: 2.5rem !important;
+}
+
+.percentage-input::after {
+    content: '%';
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray);
+    font-weight: 600;
+    z-index: 1;
+}
+
+.percentage-input input {
+    padding-right: 2.5rem !important;
+}
+
+/* Checkbox */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--color-gray-light);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Radio Buttons */
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    user-select: none;
+}
+
+.radio-label input[type="radio"] {
+    display: none;
+}
+
+.radio-mark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--color-gray-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.radio-label input[type="radio"]:checked + .radio-mark {
+    border-color: var(--color-primary);
+}
+
+.radio-label input[type="radio"]:checked + .radio-mark::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--color-primary);
+    border-radius: 50%;
+}
+
+/* Estados de Loading */
+form.loading {
+    position: relative;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+form.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--color-gray-light);
+    border-top: 3px solid var(--color-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 10;
+}
+
+.btn-loading {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.loading-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Animações do Modal */
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal.show .modal-content {
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+/* Scrollbar personalizada para o modal */
+.modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: var(--color-background);
+    border-radius: 3px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--color-gray-light);
+    border-radius: 3px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray);
+}
+
+/* Para telas menores */
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 5% auto;
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .modal-body {
+        max-height: calc(95vh - 140px);
+        padding: 1rem;
+    }
+    
+    .modal-header,
+    .modal-footer {
+        padding: 1rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .salary-fields {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Estados de foco e hover melhorados */
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border-color: var(--color-gray);
+}
+
+.form-group input:disabled,
+.form-group select:disabled,
+.form-group textarea:disabled {
+    background: var(--color-background);
+    color: var(--color-gray);
+    cursor: not-allowed;
+}
+
+/* Placeholder styling */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--color-gray);
+    opacity: 0.7;
+}
+
+/* File input styling */
+.form-group input[type="file"] {
+    padding: 0.5rem;
+    border: 2px dashed var(--color-gray-light);
+    background: var(--color-background);
+    cursor: pointer;
+}
+
+.form-group input[type="file"]:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary-light);
+}
+
+/* Color input styling */
+.form-group input[type="color"] {
+    height: 40px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Range input styling */
+.form-group input[type="range"] {
+    padding: 0;
+    height: 6px;
+    background: var(--color-gray-light);
+    border-radius: 3px;
+    outline: none;
+}
+
+.form-group input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Date and time inputs */
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group input[type="datetime-local"] {
+    position: relative;
+}
+
+/* Select dropdown styling */
+.form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666666'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+}
+
+/* Textarea resize control */
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Fieldset and legend styling */
+fieldset {
+    border: 1px solid var(--color-gray-light);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+legend {
+    font-weight: 600;
+    color: var(--color-gray-dark);
+    padding: 0 0.5rem;
+}
+
+/* Required field indicator */
+.form-group label.required::after {
+    content: ' *';
+    color: var(--color-error);
+}
+
+/* Success state */
+.form-group input:valid:not(:placeholder-shown),
+.form-group select:valid,
+.form-group textarea:valid:not(:placeholder-shown) {
+    border-color: var(--color-success);
+}
+
+/* CORREÇÕES ADICIONAIS PARA GARANTIR VISIBILIDADE */
+
+/* Garantir que o modal fique acima de tudo */
+.modal {
+    z-index: 10000 !important;
+}
+
+.modal-content {
+    z-index: 10001 !important;
+}
+
+/* Garantir que o backdrop cubra toda a tela */
+.modal::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+/* Estado quando modal está aberto */
+body.modal-open {
+    overflow: hidden !important;
+}
+
+/* Forçar display block quando o modal é aberto via JavaScript */
+.modal[style*="display: block"] {
+    display: block !important;
+    opacity: 1 !important;
+}
+
+.modal[style*="display: block"] .modal-content {
+    display: block !important;
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+}
+
+/* CORREÇÃO DE EMERGÊNCIA - Se nada mais funcionar */
+#companyModal {
+    position: fixed !important;
+    z-index: 10000 !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+#companyModal .modal-content {
+    position: relative !important;
+    margin: 50px auto !important;
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+	
+
+}
+
+/* CORREÇÃO ESPECÍFICA PARA MODAL DE GASTOS */
+#expensesModal {
+    z-index: 10002 !important;
+}
+
+#expensesModal .modal-content {
+    max-width: 700px !important;
+}
+
+/* Estilos para lista de gastos */
+.expense-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-gray-light);
+    background: var(--color-white);
+    margin-bottom: 0.5rem;
+    border-radius: var(--border-radius);
+}
+
+.expense-item:last-child {
+    border-bottom: none;
+}
+
+.expense-info {
+    flex: 1;
+}
+
+.expense-type {
+    font-weight: 600;
+    color: var(--color-gray-dark);
+    font-size: 0.9rem;
+}
+
+.expense-description {
+    font-size: 0.8rem;
+    color: var(--color-gray);
+    margin-top: 0.25rem;
+}
+
+.expense-date {
+    font-size: 0.8rem;
+    color: var(--color-gray);
+}
+
+.expense-amount {
+    font-weight: 600;
+    color: var(--color-error);
+    font-size: 1rem;
+}
+
+.expense-total {
+    background: var(--color-background);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-top: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid var(--color-gray-light);
+}
+
+.expense-total .amount {
+    color: var(--color-error);
+    font-size: 1.5rem;
+}
+
+/* Resumo Financeiro */
+
+.financial-summary {
+    margin: 1rem 0;
+}
+
+.financial-summary-grid {
+    background: var(--color-background);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-gray-light);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-gray-light);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-item.total {
+    border-top: 2px solid var(--color-primary);
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+}
+
+.summary-label {
+    font-weight: 600;
+    color: var(--color-gray-dark);
+}
+
+.summary-value {
+    font-weight: 600;
+}
+
+.summary-value.freight {
+    color: var(--color-success);
+}
+
+.summary-value.services {
+    color: var(--color-info);
+}
+
+.summary-value.commission {
+    color: var(--color-warning);
+}
+
+.summary-value.total {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+}

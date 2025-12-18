@@ -1,0 +1,60 @@
+/* public/assets/css/reset.css */
+:root {
+    /* Cores BT Log */
+    --color-primary: #FF6B00;
+    --color-primary-dark: #E55A00;
+    --color-primary-light: #FFE0CC;
+    --color-secondary: #666666;
+    --color-background: #F5F5F5;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    --color-gray-light: #E0E0E0;
+    --color-gray: #9E9E9E;
+    --color-gray-dark: #424242;
+    --color-success: #4CAF50;
+    --color-warning: #FF9800;
+    --color-error: #F44336;
+    --color-info: #2196F3;
+    
+    /* Layout */
+    --sidebar-width: 280px;
+    --header-height: 70px;
+    --border-radius: 8px;
+    --border-radius-lg: 12px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-black);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-gray-light);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray);
+}

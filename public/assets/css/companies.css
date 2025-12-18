@@ -1,0 +1,154 @@
+/* public/assets/css/companies.css */
+/* Componentes específicos de empresas */
+.company-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: contain;
+    border: 2px solid var(--color-gray-light);
+    background: var(--color-white);
+    padding: 3px;
+}
+
+.company-logo-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    font-weight: bold;
+    font-size: 0.8rem;
+    background: var(--color-primary);
+    border: 2px solid var(--color-gray-light);
+}
+
+.company-logo-large-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    font-weight: bold;
+    font-size: 1.2rem;
+    background: var(--color-primary);
+    border: 3px solid var(--color-gray-light);
+}
+
+.company-logo-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: contain;
+    border: 3px solid var(--color-gray-light);
+    background: var(--color-white);
+    padding: 5px;
+}
+
+.company-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.company-info strong {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.company-color {
+    font-size: 0.8rem;
+    color: var(--color-gray);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.company-color::before {
+    content: '●';
+    font-size: 1.2rem;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.gap-1 {
+    gap: 1rem;
+}
+
+.logo-preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 2px dashed var(--color-gray-light);
+    border-radius: var(--border-radius);
+    background: var(--color-background);
+    margin-top: 1rem;
+}
+
+.logo-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-preview-text {
+    font-size: 0.8rem;
+    color: var(--color-gray);
+    text-align: center;
+}
+
+.btn-view {
+    color: var(--color-success);
+}
+
+.btn-view:hover {
+    background: #E8F5E8;
+}
+
+/* Estilo para formulário em modo leitura */
+.form-group input:disabled,
+.form-group select:disabled,
+.form-group textarea:disabled {
+    background: var(--color-background);
+    color: var(--color-gray-dark);
+    border-color: var(--color-gray-light);
+    opacity: 1;
+}
+
+.form-group input[type="color"]:disabled {
+    opacity: 0.7;
+}
+
+/* CORREÇÕES DE EMERGÊNCIA */
+.btn-view, .btn-edit, .btn-delete {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+.company-logo, .company-logo-large {
+    border: 2px solid red !important; /* Para debug visual */
+}
+
+/* Garantir que o modal abra */
+.modal[style*="display: block"] {
+    display: block !important;
+    opacity: 1 !important;
+}
+
+.modal[style*="display: block"] .modal-content {
+    display: block !important;
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+}

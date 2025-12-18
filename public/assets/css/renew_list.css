@@ -1,0 +1,557 @@
+/* public/assets/css/contracts_renew.css */
+/* ESTILOS ESPECÍFICOS PARA RENOVAÇÃO DE CONTRATOS */
+
+/* Seção de Instruções */
+.instructions-section {
+    margin-bottom: 2rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.instructions-section .card {
+    background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+    border: none;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border-left: 4px solid var(--color-info);
+}
+
+.instructions-section .card-body {
+    padding: 1.75rem;
+}
+
+.instructions-section h4 {
+    margin: 0 0 1.25rem 0;
+    color: var(--color-info);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.instructions-section h4 i {
+    font-size: 1.5rem;
+}
+
+.instructions-section ul {
+    margin: 0;
+    padding-left: 1.75rem;
+}
+
+.instructions-section li {
+    margin-bottom: 0.75rem;
+    color: var(--color-gray-dark);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    position: relative;
+}
+
+.instructions-section li::before {
+    content: '✓';
+    position: absolute;
+    left: -1.75rem;
+    color: var(--color-success);
+    font-weight: bold;
+}
+
+/* Filtros de Renovação */
+.filter-section.renewal-filters {
+    background: linear-gradient(135deg, #FFF3E0, #FFECB3);
+    border: 1px solid rgba(255, 152, 0, 0.2);
+}
+
+.filter-section.renewal-filters h3 {
+    color: #E65100;
+}
+
+.filter-section.renewal-filters .filter-group label {
+    color: #E65100;
+}
+
+.filter-section.renewal-filters .form-select {
+    border-color: rgba(255, 152, 0, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.filter-section.renewal-filters .form-select:focus {
+    border-color: var(--color-warning);
+    box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.1);
+}
+
+/* Tabela de Renovação */
+.renewal-table {
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.renewal-table-header {
+    padding: 1.5rem;
+    border-bottom: 2px solid var(--color-warning);
+    background: linear-gradient(135deg, #FFF3E0, #FFECB3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.renewal-table-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #E65100;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.renewal-table-header h2 i {
+    color: var(--color-warning);
+    font-size: 1.5rem;
+}
+
+/* Estado de Carregamento */
+.loading-state {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--color-gray);
+}
+
+.loading-state i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-warning);
+}
+
+.loading-state p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--color-gray-dark);
+}
+
+/* Seção de Renovações Recentes */
+.recent-renewals-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--color-gray-light);
+}
+
+.recent-renewals-section .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.recent-renewals-section .section-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-black);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.recent-renewals-section .section-header i {
+    color: var(--color-info);
+    font-size: 1.5rem;
+}
+
+.renewals-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.renewal-card {
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--color-success);
+    transition: all 0.3s ease;
+}
+
+.renewal-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.renewal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.renewal-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-black);
+    margin: 0;
+}
+
+.renewal-date {
+    font-size: 0.85rem;
+    color: var(--color-gray);
+    background: var(--color-background);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.renewal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.renewal-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.renewal-label {
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    font-weight: 500;
+}
+
+.renewal-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.renewal-value.success {
+    color: var(--color-success);
+}
+
+.renewal-value.warning {
+    color: var(--color-warning);
+}
+
+.renewal-actions {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-gray-light);
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn-renew-again {
+    padding: 8px 16px;
+    background: var(--color-success);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    flex: 1;
+    justify-content: center;
+}
+
+.btn-renew-again:hover {
+    background: #2E7D32;
+    transform: translateY(-1px);
+}
+
+.btn-view-details {
+    padding: 8px 16px;
+    background: var(--color-info);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    flex: 1;
+    justify-content: center;
+}
+
+.btn-view-details:hover {
+    background: #1976D2;
+    transform: translateY(-1px);
+}
+
+/* Responsividade para Renew */
+@media (max-width: 768px) {
+    .instructions-section .card-body {
+        padding: 1.25rem;
+    }
+    
+    .instructions-section h4 {
+        font-size: 1.1rem;
+    }
+    
+    .instructions-section li {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .renewal-table-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.25rem;
+    }
+    
+    .renewals-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .renewal-card {
+        padding: 1.25rem;
+    }
+    
+    .renewal-actions {
+        flex-direction: column;
+    }
+    
+    .btn-renew-again,
+    .btn-view-details {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .renewal-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .renewal-date {
+        align-self: flex-start;
+    }
+}
+
+/* Centralizar mensagem de "Nenhum Contrato Encontrado" */
+#renewalTableBody tr[colspan] .empty-state-modern {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 300px;
+    width: 100%;
+}
+
+#renewalTableBody tr[colspan] .empty-state-modern h3 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+#renewalTableBody tr[colspan] .empty-state-modern p {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 1.5rem auto;
+}
+
+#renewalTableBody tr[colspan] .empty-state-modern .btn {
+    margin: 0 auto;
+}
+
+/* Centralizar conteúdo da tabela de renovação */
+#renewalTableBody tr:not([colspan]) td {
+    vertical-align: middle;
+}
+
+/* Centralizar colunas específicas */
+#renewalTableBody tr:not([colspan]) td:nth-child(2), /* Vencimento Atual */
+#renewalTableBody tr:not([colspan]) td:nth-child(3), /* Status */
+#renewalTableBody tr:not([colspan]) td:nth-child(4), /* Última Renovação */
+#renewalTableBody tr:not([colspan]) td:nth-child(5), /* Próxima Sugestão */
+#renewalTableBody tr:not([colspan]) td:nth-child(6) { /* Ações */
+    text-align: center;
+}
+
+.expiration-card-modern {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Centralizar renovações recentes */
+.renewals-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    justify-items: center; /* Centraliza os cards horizontalmente */
+}
+
+.renewal-card {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.renewal-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.renewal-title {
+    text-align: center;
+    width: 100%;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.renewal-date {
+    text-align: center;
+    width: 100%;
+    font-size: 0.85rem;
+}
+
+.renewal-info {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.renewal-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.renewal-label {
+    font-weight: 600;
+    color: var(--color-gray);
+    font-size: 0.85rem;
+}
+
+.renewal-value {
+    font-size: 0.95rem;
+    text-align: center;
+    width: 100%;
+}
+
+.renewal-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.btn-view-details,
+.btn-renew-again {
+    width: 100%;
+    justify-content: center;
+}
+
+/* Centralizar loading state */
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 200px;
+    width: 100%;
+}
+
+.loading-state i {
+    margin-bottom: 1rem;
+}
+
+.loading-state p {
+    text-align: center;
+    width: 100%;
+}
+
+/* Centralizar mensagem de erro */
+.error-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 200px;
+    width: 100%;
+}
+
+.error-state i {
+    font-size: 2rem;
+    color: var(--color-error);
+    margin-bottom: 1rem;
+}
+
+.error-state h3,
+.error-state p {
+    text-align: center;
+    width: 100%;
+}
+
+.error-state .btn {
+    margin: 1rem auto 0 auto;
+}
+
+/* Centralizar botão "Carregar Mais" */
+.load-more-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.btn-load-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-load-more:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+}
+
+/* Ajustar responsividade */
+@media (max-width: 768px) {
+    .renewals-list {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    
+    .renewal-card {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .renewals-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .renewal-card {
+        max-width: 100%;
+    }
+}

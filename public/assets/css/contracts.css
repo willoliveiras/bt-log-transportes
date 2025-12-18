@@ -1,0 +1,542 @@
+/* public/assets/css/contracts_list.css */
+/* ESTILOS ESPECÍFICOS PARA LISTA DE CONTRATOS */
+
+/* Dashboard de Contratos */
+.stats-grid-discreet {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Cards de Contratos na Tabela */
+.contract-card-modern {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+}
+
+.contract-avatar-modern {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.contract-info-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    flex: 1;
+}
+
+.contract-name-modern {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-black);
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+.contract-details-modern {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.8rem;
+    color: var(--color-gray);
+}
+
+.contract-details-modern span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+/* Partes do Contrato */
+.parties-card-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.party-item-modern {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: var(--color-background);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-gray-light);
+}
+
+.party-icon-modern {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.party-icon-modern.client {
+    background: linear-gradient(135deg, var(--color-info), #1976D2);
+}
+
+.party-icon-modern.supplier {
+    background: linear-gradient(135deg, var(--color-warning), #F57C00);
+}
+
+.party-info-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    flex: 1;
+}
+
+.party-type-modern {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.party-name-modern {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-black);
+    word-break: break-word;
+}
+
+.party-alias-modern {
+    font-size: 0.8rem;
+    color: var(--color-gray);
+    font-style: italic;
+}
+
+/* Período */
+.period-card-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 180px;
+}
+
+.period-dates-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.date-item-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.date-label-modern {
+    font-size: 0.75rem;
+    color: var(--color-gray);
+    font-weight: 500;
+}
+
+.date-value-modern {
+    font-size: 0.9rem;
+    color: var(--color-black);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.date-value-modern.expired {
+    color: var(--color-error);
+    font-weight: 600;
+}
+
+.date-value-modern.expired i {
+    color: var(--color-error);
+}
+
+.period-remaining-modern {
+    padding: 6px 12px;
+    border-radius: var(--border-radius);
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+}
+
+.period-remaining-modern.ok {
+    background: rgba(76, 175, 80, 0.1);
+    color: var(--color-success);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.period-remaining-modern.warning {
+    background: rgba(255, 152, 0, 0.1);
+    color: var(--color-warning);
+    border: 1px solid rgba(255, 152, 0, 0.2);
+}
+
+.period-remaining-modern.expired {
+    background: rgba(244, 67, 54, 0.1);
+    color: var(--color-error);
+    border: 1px solid rgba(244, 67, 54, 0.2);
+}
+
+/* Valor */
+.value-card-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 140px;
+}
+
+.value-amount-modern {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-black);
+}
+
+.value-currency-modern {
+    font-size: 0.8rem;
+    color: var(--color-gray);
+    font-weight: 500;
+}
+
+.value-terms-modern {
+    font-size: 0.8rem;
+    color: var(--color-info);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(33, 150, 243, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    width: fit-content;
+}
+
+/* Documento */
+.document-card-modern {
+    min-width: 150px;
+}
+
+.document-item-modern {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    background: var(--color-background);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-gray-light);
+}
+
+.document-icon-modern {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #F44336, #D32F2F);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.document-info-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.document-name-modern {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.document-actions-modern {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-view-document {
+    padding: 4px 12px;
+    background: var(--color-info);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-view-document:hover {
+    background: #1976D2;
+    transform: translateY(-1px);
+}
+
+.btn-download-document {
+    padding: 4px 8px;
+    background: var(--color-success);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-download-document:hover {
+    background: #2E7D32;
+    transform: translateY(-1px);
+}
+
+.empty-document-modern {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-gray);
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    background: var(--color-background);
+    border-radius: var(--border-radius);
+    border: 1px dashed var(--color-gray-light);
+}
+
+/* Status */
+.status-pill-modern {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.status-pill-modern.active {
+    background: rgba(76, 175, 80, 0.1);
+    color: var(--color-success);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.status-pill-modern.inactive {
+    background: rgba(244, 67, 54, 0.1);
+    color: var(--color-error);
+    border: 1px solid rgba(244, 67, 54, 0.2);
+}
+
+.status-pill-modern.warning {
+    background: rgba(255, 152, 0, 0.1);
+    color: var(--color-warning);
+    border: 1px solid rgba(255, 152, 0, 0.2);
+}
+
+.status-pill-modern.draft {
+    background: rgba(33, 150, 243, 0.1);
+    color: var(--color-info);
+    border: 1px solid rgba(33, 150, 243, 0.2);
+}
+
+.status-pill-modern.cancelled {
+    background: rgba(158, 158, 158, 0.1);
+    color: var(--color-gray);
+    border: 1px solid rgba(158, 158, 158, 0.2);
+}
+
+/* Ações */
+.actions-toolbar-modern {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+}
+
+.action-btn-modern {
+    background: none;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-view-modern {
+    color: var(--color-info);
+    background: rgba(33, 150, 243, 0.1);
+}
+
+.btn-view-modern:hover {
+    background: var(--color-info);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-edit-modern {
+    color: var(--color-warning);
+    background: rgba(255, 152, 0, 0.1);
+}
+
+.btn-edit-modern:hover {
+    background: var(--color-warning);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-renew-modern {
+    color: var(--color-success);
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.btn-renew-modern:hover {
+    background: var(--color-success);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-delete-modern {
+    color: var(--color-error);
+    background: rgba(244, 67, 54, 0.1);
+}
+
+.btn-delete-modern:hover {
+    background: var(--color-error);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Estado Vazio */
+.empty-state-modern {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--color-gray);
+}
+
+.empty-icon-modern {
+    font-size: 4rem;
+    color: var(--color-gray-light);
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+}
+
+.empty-state-modern h3 {
+    margin: 0 0 1rem 0;
+    color: var(--color-gray-dark);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.empty-state-modern p {
+    margin: 0 0 2rem 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .contracts-table {
+        font-size: 0.9rem;
+    }
+    
+    .contract-details-modern {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .party-item-modern {
+        padding: 6px 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contract-card-modern {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    .contract-avatar-modern {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .period-card-modern {
+        min-width: auto;
+    }
+    
+    .value-card-modern {
+        min-width: auto;
+    }
+    
+    .actions-toolbar-modern {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .action-btn-modern {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .document-item-modern {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 8px;
+    }
+    
+    .document-actions-modern {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .party-item-modern {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 8px;
+    }
+    
+    .party-icon-modern {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+}
+

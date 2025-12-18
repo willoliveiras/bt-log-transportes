@@ -1,0 +1,824 @@
+/* public/assets/css/payroll.css */
+
+/* ===== ESTILOS GERAIS ===== */
+.payroll-page {
+    padding: 20px;
+    background: var(--color-background);
+    min-height: 100vh;
+}
+
+/* Header da Página */
+.page-header {
+    background: white;
+    color: var(--color-black);
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--color-primary);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.header-text h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--color-black);
+}
+
+.header-text p {
+    font-size: 1.1rem;
+    color: var(--color-gray);
+    margin: 0;
+}
+
+.header-stats {
+    display: flex;
+    gap: 30px;
+    background: var(--color-background);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--color-gray-light);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    margin-top: 4px;
+}
+
+/* Botões do Header */
+.header-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+}
+
+.btn-secondary {
+    background: var(--color-gray-light);
+    color: var(--color-gray-dark);
+    border: 1px solid var(--color-gray);
+}
+
+.btn-secondary:hover {
+    background: var(--color-gray);
+    color: white;
+}
+
+/* Cards de Métricas */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.metric-card {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-gray-light);
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.metric-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.metric-icon.primary {
+    background: var(--color-primary);
+}
+
+.metric-icon.success {
+    background: var(--color-success);
+}
+
+.metric-icon.warning {
+    background: var(--color-warning);
+}
+
+.metric-icon.info {
+    background: var(--color-info);
+}
+
+.metric-content {
+    flex: 1;
+}
+
+.metric-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-black);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.metric-label {
+    font-size: 0.9rem;
+    color: var(--color-gray-dark);
+    font-weight: 600;
+}
+
+/* Filtros */
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--color-gray-dark);
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.filter-select, .search-input {
+    padding: 12px;
+    border: 1px solid var(--color-gray-light);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.filter-select:focus, .search-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+}
+
+.search-box-wrapper {
+    position: relative;
+}
+
+.search-input {
+    padding-left: 40px;
+    width: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray);
+}
+
+/* Tabela */
+.payroll-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.payroll-table th {
+    background: var(--color-background);
+    padding: 16px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--color-gray-dark);
+    border-bottom: 2px solid var(--color-gray-light);
+    font-size: 0.9rem;
+}
+
+.payroll-table td {
+    padding: 16px 12px;
+    border-bottom: 1px solid var(--color-gray-light);
+    vertical-align: middle;
+}
+
+.payroll-table tr:last-child td {
+    border-bottom: none;
+}
+
+.payroll-table tr:hover {
+    background: rgba(255, 107, 0, 0.03);
+}
+
+/* Informações do Funcionário */
+.employee-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.employee-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.employee-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.employee-name {
+    font-weight: 600;
+    color: var(--color-black);
+    margin-bottom: 2px;
+}
+
+.employee-position {
+    font-size: 0.85rem;
+    color: var(--color-gray);
+}
+
+.employee-company {
+    font-size: 0.75rem;
+    color: var(--color-gray-light);
+}
+
+/* Badges e Status */
+.month-badge {
+    background: var(--color-background);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-gray-dark);
+    border: 1px solid var(--color-gray-light);
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-pendente {
+    background: #FFF3E0;
+    color: #E65100;
+    border: 1px solid #FFB74D;
+}
+
+.status-pago {
+    background: #E8F5E8;
+    color: #2E7D32;
+    border: 1px solid #A5D6A7;
+}
+
+/* Valores Salariais */
+.salary-amount {
+    font-weight: 600;
+}
+
+.base-salary {
+    color: var(--color-gray-dark);
+}
+
+.commission-amount {
+    color: #2E7D32;
+}
+
+.benefits-amount {
+    color: #1565C0;
+}
+
+.discounts-amount {
+    color: #C62828;
+}
+
+.net-salary {
+    color: var(--color-primary);
+    font-size: 1.05rem;
+}
+
+/* Botões de Ação */
+.action-buttons {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-action {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.btn-view {
+    background: #E3F2FD;
+    color: #1565C0;
+}
+
+.btn-edit {
+    background: #E8F5E8;
+    color: #2E7D32;
+}
+
+.btn-success {
+    background: #4CAF50;
+    color: white;
+}
+
+.btn-danger {
+    background: #FFEBEE;
+    color: #C62828;
+}
+
+.btn-print {
+    background: #F3E5F5;
+    color: #7B1FA2;
+}
+
+.btn-action:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estado Vazio */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--color-gray);
+}
+
+.empty-icon {
+    font-size: 4rem;
+    color: var(--color-gray-light);
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.empty-state h3 {
+    font-size: 1.5rem;
+    color: var(--color-gray-dark);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.empty-state p {
+    font-size: 1rem;
+    margin-bottom: 24px;
+    opacity: 0.8;
+}
+
+.empty-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Paginação */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-top: 1px solid var(--color-gray-light);
+    margin-top: 20px;
+    background: white;
+}
+
+.pagination-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: 1px solid var(--color-gray-light);
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    color: var(--color-gray-dark);
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.page-info {
+    font-weight: 600;
+    color: var(--color-gray-dark);
+}
+
+.total-info {
+    font-size: 0.85rem;
+    color: var(--color-gray);
+}
+
+/* Loading */
+.payroll-loading {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.payroll-loading.show {
+    display: block;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--color-gray-light);
+    border-top: 3px solid var(--color-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 16px;
+}
+
+.loading-spinner.large {
+    width: 60px;
+    height: 60px;
+    border-width: 4px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Modal de Detalhes */
+.payroll-details {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.payroll-details-header {
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.employee-info-large {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.employee-avatar-large {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.employee-details-large {
+    flex: 1;
+}
+
+.employee-name-large {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--color-black);
+}
+
+.employee-position-large {
+    font-size: 1.1rem;
+    color: var(--color-gray);
+    margin-bottom: 2px;
+}
+
+.employee-company-large {
+    font-size: 0.9rem;
+    color: var(--color-gray-light);
+}
+
+.payroll-summary {
+    background: var(--color-background);
+    padding: 16px;
+    border-radius: 6px;
+    margin-top: 12px;
+    text-align: center;
+    border: 1px solid var(--color-gray-light);
+}
+
+.net-salary-large {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+    color: var(--color-primary);
+}
+
+/* Breakdown */
+.payroll-breakdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.breakdown-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--color-gray-light);
+}
+
+.breakdown-section h4 {
+    color: var(--color-gray-dark);
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--color-gray-light);
+}
+
+.breakdown-section.proventos h4 {
+    color: #2E7D32;
+    border-bottom-color: #4CAF50;
+}
+
+.breakdown-section.descontos h4 {
+    color: #C62828;
+    border-bottom-color: #F44336;
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-gray-light);
+}
+
+.breakdown-item:last-child {
+    border-bottom: none;
+}
+
+.breakdown-label {
+    font-weight: 600;
+    color: var(--color-gray-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.breakdown-value {
+    font-weight: 600;
+}
+
+.breakdown-value.positive {
+    color: #2E7D32;
+}
+
+.breakdown-value.negative {
+    color: #C62828;
+}
+
+.breakdown-item.total {
+    background: var(--color-primary);
+    color: white;
+    padding: 16px;
+    border-radius: 6px;
+    margin-top: 12px;
+}
+
+.breakdown-item.total .breakdown-label,
+.breakdown-item.total .breakdown-value {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .payroll-breakdown {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        padding: 20px;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .header-stats {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .header-actions {
+        justify-content: center;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .filters-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .employee-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .action-buttons {
+        justify-content: center;
+    }
+    
+    .pagination {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .employee-info-large {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .empty-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .metric-card {
+        padding: 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .btn-action {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .btn-primary, .btn-secondary {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Adicionar ao payroll.css */
+
+.alert {
+    padding: 16px;
+    border-radius: 8px;
+    margin: 16px 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.alert-warning {
+    background: #FFF3E0;
+    border: 1px solid #FFB74D;
+    color: #E65100;
+}
+
+.alert-danger {
+    background: #FFEBEE;
+    border: 1px solid #EF9A9A;
+    color: #C62828;
+}
+
+.alert-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.alert-content {
+    flex: 1;
+}
+
+.alert-content ul {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+.alert-content li {
+    margin-bottom: 4px;
+}
