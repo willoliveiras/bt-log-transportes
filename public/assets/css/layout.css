@@ -1,99 +1,65 @@
 /* public/assets/css/layout.css */
-/* Layout Principal */
+/* Layout Principal - ATUALIZADO */
+
+:root {
+    /* Cores BT Log - Base */
+    --color-primary: #FF6B00;      /* Laranja BT Log */
+    --color-primary-dark: #E55A00;
+    --color-primary-light: #FFE0CC;
+    --color-secondary: #003366;    /* Azul Marinho */
+    --color-secondary-dark: #002244;
+    --color-secondary-light: #335580;
+    --color-accent: #FF6B00;
+    --color-black: #1A1A1A;
+    --color-black-light: #2D2D2D;
+    --color-white: #FFFFFF;
+    --color-gray-light: #F5F7FA;   /* FUNDO GERAL DA PÁGINA */
+    --color-gray: #6C757D;
+    --color-gray-dark: #495057;
+    --color-success: #28A745;
+    --color-warning: #FFC107;
+    --color-error: #DC3545;
+    --color-info: #17A2B8;
+    
+    /* Layout */
+    --sidebar-width: 280px;
+    --header-height: 70px;
+    --border-radius: 8px;
+    --border-radius-lg: 12px;
+    --border-radius-xl: 20px;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+    --shadow-xl: 0 20px 50px rgba(0,0,0,0.2);
+}
+
+/* ===== RESET E BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-gray-light) !important; /* FUNDO GERAL */
+    color: var(--color-black);
+    line-height: 1.6;
+    font-size: 14px;
+    overflow-x: hidden;
+}
+
+/* ===== LAYOUT PRINCIPAL ===== */
 .layout {
     display: flex;
     min-height: 100vh;
-}
-
-/* User Menu */
-.user-menu {
-    position: relative;
-}
-
-.user-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--color-primary);
-    color: var(--color-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    cursor: pointer;
-    border: 2px solid var(--color-gray-light);
-}
-
-.user-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: var(--color-white);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-lg);
-    min-width: 200px;
-    padding: 0.5rem 0;
-    display: none;
-    z-index: 1000;
-}
-
-.user-dropdown.show {
-    display: block;
-}
-
-.user-info {
-    padding: 1rem;
-    border-bottom: 1px solid var(--color-gray-light);
-}
-
-.user-name {
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-}
-
-.user-role {
-    font-size: 0.8rem;
-    color: var(--color-gray);
-    margin-bottom: 0.25rem;
-}
-
-.user-email {
-    font-size: 0.8rem;
-    color: var(--color-gray);
-}
-
-.dropdown-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1rem;
-    color: var(--color-gray-dark);
-    text-decoration: none;
-    transition: background 0.3s ease;
-    border: none;
-    background: none;
     width: 100%;
-    text-align: left;
-    font-size: 0.9rem;
-    cursor: pointer;
+    background-color: var(--color-gray-light); /* FUNDO DO LAYOUT */
 }
 
-.dropdown-item:hover {
-    background: var(--color-primary-light);
-    color: var(--color-primary);
-}
-
-.dropdown-item.logout {
-    color: var(--color-error);
-    border-top: 1px solid var(--color-gray-light);
-}
-
-.dropdown-item.logout:hover {
-    background: #FFEBEE;
-    color: var(--color-error);
-}
-
-/* Sidebar */
+/* ===== SIDEBAR ===== */
 .sidebar {
     width: var(--sidebar-width);
     background: var(--color-white);
@@ -165,16 +131,18 @@
     font-weight: 600;
 }
 
-/* Main Content */
+/* ===== CONTEÚDO PRINCIPAL ===== */
 .main-content {
     flex: 1;
     margin-left: var(--sidebar-width);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: var(--color-gray-light) !important; /* FUNDO CINZA */
+    width: calc(100% - var(--sidebar-width));
 }
 
-/* Top Header */
+/* ===== TOP HEADER ===== */
 .top-header {
     height: var(--header-height);
     background: var(--color-white);
@@ -186,6 +154,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    width: 100%;
 }
 
 .page-title {
@@ -201,22 +170,9 @@
     gap: 1rem;
 }
 
-/* Content Area */
-.content-area {
-    padding: 2rem;
-    flex: 1;
-}
-
-
 .header-left {
     display: flex;
     align-items: center;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
 }
 
 .company-selector,
@@ -230,6 +186,17 @@
     min-width: 150px;
 }
 
+/* ===== ÁREA DE CONTEÚDO ===== */
+.content-area {
+    padding: 2rem;
+    flex: 1;
+    background-color: var(--color-gray-light) !important; /* FUNDO CINZA */
+    min-height: calc(100vh - var(--header-height));
+    width: 100%;
+    overflow-y: auto;
+}
+
+/* ===== UTILITÁRIOS DE LAYOUT ===== */
 /* Prevenir scroll do body quando modal está aberto */
 body.modal-open {
     overflow: hidden;
@@ -248,4 +215,37 @@ body.modal-open {
     height: 100%;
     background: rgba(0,0,0,0.5);
     z-index: 9999;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+    
+    .top-header {
+        padding: 0 1rem;
+    }
+    
+    .content-area {
+        padding: 1rem;
+    }
+}
+
+/* ===== CLASSES UTILITÁRIAS PARA FUNDO ===== */
+.bg-page {
+    background-color: var(--color-gray-light) !important;
+}
+
+.bg-content {
+    background-color: var(--color-white) !important;
+}
+
+.bg-transparent {
+    background-color: transparent !important;
 }

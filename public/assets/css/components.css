@@ -1,4 +1,32 @@
 /* public/assets/css/components.css */
+
+/* ===== Zebra rows para melhor leitura das listas/tabelas ===== */
+/* Cores definidas como variáveis para fácil ajuste */
+:root {
+    --row-bg-odd: #F8FAFC;   /* cinza claro */
+    --row-bg-even: #EEF2F6;  /* cinza um pouco mais escuro */
+}
+
+/* Aplica zebra apenas ao corpo das tabelas (thead fica intacto) */
+.data-table tbody tr:nth-child(odd) {
+    background: var(--row-bg-odd);
+}
+
+.data-table tbody tr:nth-child(even) {
+    background: var(--row-bg-even);
+}
+
+/* Manter hover com destaque (substitui zebra ao passar o mouse) */
+.data-table tbody tr:hover {
+    background: var(--color-primary-light);
+}
+
+/* Se houver linhas especiais (ex.: empty-state) proteger seu background */
+.data-table tbody tr[colspan] td,
+.data-table tbody tr.empty-state td {
+    background: transparent !important;
+}
+
 /* Cards */
 .content-card {
     background: var(--color-white);
@@ -302,13 +330,22 @@
 .text-right {
     text-align: right;
 }
+/* Zebra forçada nas células — coloque no final do arquivo CSS carregado por último */
+.data-table tbody tr:nth-child(odd) td {
+    background: var(--row-bg-odd, #F8FAFC) !important;
+}
 
+.data-table tbody tr:nth-child(even) td {
+    background: var(--row-bg-even, #EEF2F6) !important;
+}
 
+/* Preservar hover visual ao passar o mouse */
+.data-table tbody tr:hover td {
+    background: var(--color-primary-light) !important;
+}
 
-
-
-
-
-
-
-
+/* Proteger linhas de estado vazio */
+.data-table tbody tr[colspan] td,
+.data-table tbody tr.empty-state td {
+    background: transparent !important;
+}

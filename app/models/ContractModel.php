@@ -268,24 +268,40 @@ class ContractModel {
 			
 			$stmt = $this->db->prepare($sql);
 			
-			// Preparar valores
+			// Preparar valores com fallback para aceitar updates parciais
+			$company_id = $data['company_id'] ?? $currentContract['company_id'];
+			$client_id = array_key_exists('client_id', $data) ? ($data['client_id'] !== '' ? $data['client_id'] : null) : $currentContract['client_id'];
+			$supplier_id = array_key_exists('supplier_id', $data) ? ($data['supplier_id'] !== '' ? $data['supplier_id'] : null) : $currentContract['supplier_id'];
+			$contract_type = $data['contract_type'] ?? $currentContract['contract_type'];
+			$contract_number = $data['contract_number'] ?? $currentContract['contract_number'];
+			$title = $data['title'] ?? $currentContract['title'];
+			$description = $data['description'] ?? ($currentContract['description'] ?? '');
+			$start_date = $data['start_date'] ?? $currentContract['start_date'];
+			$end_date = $data['end_date'] ?? $currentContract['end_date'];
+			$value = isset($data['value']) ? $data['value'] : ($currentContract['value'] ?? 0);
+			$currency = $data['currency'] ?? ($currentContract['currency'] ?? 'BRL');
+			$payment_terms = $data['payment_terms'] ?? ($currentContract['payment_terms'] ?? '');
+			$renewal_terms = $data['renewal_terms'] ?? ($currentContract['renewal_terms'] ?? '');
+			$status = $data['status'] ?? ($currentContract['status'] ?? 'draft');
+			$notes = $data['notes'] ?? ($currentContract['notes'] ?? '');
+			
 			$values = [
-				$data['company_id'],
-				$data['client_id'] ?? null,
-				$data['supplier_id'] ?? null,
-				$data['contract_type'],
-				$data['contract_number'],
-				$data['title'],
-				$data['description'] ?? '',
-				$data['start_date'],
-				$data['end_date'],
-				$data['value'] ?? 0,
-				$data['currency'] ?? 'BRL',
-				$data['payment_terms'] ?? '',
-				$data['renewal_terms'] ?? '',
-				$data['status'] ?? 'draft',
+				(int)$company_id,
+				$client_id !== '' ? ($client_id !== null ? (int)$client_id : null) : null,
+				$supplier_id !== '' ? ($supplier_id !== null ? (int)$supplier_id : null) : null,
+				$contract_type,
+				$contract_number,
+				$title,
+				$description,
+				$start_date,
+				$end_date,
+				(float)$value,
+				$currency,
+				$payment_terms,
+				$renewal_terms,
+				$status,
 				$fileName,
-				$data['notes'] ?? '',
+				$notes,
 				$id
 			];
 			
@@ -302,8 +318,8 @@ class ContractModel {
 			$this->db->commit();
 			
 			// Atualizar alerta de vencimento se data mudou
-			if ($currentContract['end_date'] !== $data['end_date']) {
-				$this->updateExpirationAlert($id, $data['end_date']);
+			if ($currentContract['end_date'] !== $end_date) {
+				$this->updateExpirationAlert($id, $end_date);
 			}
 			
 			error_log("✅ Contrato atualizado com sucesso - ID: " . $id);

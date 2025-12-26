@@ -1,6 +1,7 @@
 /* public/assets/css/main.css */
 
 @import url('reset.css');
+@import url('page-backgrounds.css');
 @import url('layout.css');
 @import url('components.css');
 @import url('forms.css');
@@ -16,16 +17,19 @@
 @import url('contracts.css'); /* NOVO */
 @import url('expiring.css');
 @import url('header.css'); /* NOVO */
+
+
+
 :root {
     /* Cores BT Log */
     --color-primary: #FF6B00;
     --color-primary-dark: #E55A00;
     --color-primary-light: #FFE0CC;
     --color-secondary: #666666;
-    --color-background: #F5F5F5;
+    --color-background: #F3F4F6;
     --color-white: #FFFFFF;
-    --color-black: #000000;
-    --color-gray-light: #E0E0E0;
+    --color-black: #111827;
+    --color-gray-light: #E6E9EE;
     --color-gray: #9E9E9E;
     --color-gray-dark: #424242;
     --color-success: #4CAF50;
@@ -38,9 +42,9 @@
     --header-height: 70px;
     --border-radius: 8px;
     --border-radius-lg: 12px;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-    --shadow: 0 4px 6px rgba(0,0,0,0.1);
-    --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+    --shadow-sm: 0 1px 3px rgba(16,24,40,0.06);
+    --shadow: 0 6px 18px rgba(16,24,40,0.06);
+    --shadow-lg: 0 12px 30px rgba(16,24,40,0.08);
 }
 
 /* Reset */
@@ -1069,3 +1073,23 @@ body {
     }
 }
 
+/* Zebra — contraste forte */
+:root {
+    --row-bg-odd: #cbd1db;   /* cinza claro */
+    --row-bg-even: #bababa;  /* cinza mais escuro para contraste */
+}
+
+.data-table tbody tr:nth-child(odd) td,
+.table-responsive table tbody tr:nth-child(odd) td {
+    background: var(--row-bg-odd) !important;
+}
+
+.data-table tbody tr:nth-child(even) td,
+.table-responsive table tbody tr:nth-child(even) td {
+    background: var(--row-bg-even) !important;
+}
+
+.data-table tbody tr:hover td,
+.table-responsive table tbody tr:hover td {
+    background: var(--color-primary-light) !important;
+}

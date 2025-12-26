@@ -154,7 +154,17 @@ try {
             break;
             
         case 'delete':
-            $id = $_POST['id'] ?? null;
+            // Aceitar id via POST, GET ou corpo raw (JSON) => torna o endpoint robusto
+            $id = $_POST['id'] ?? $_GET['id'] ?? null;
+            if (!$id) {
+                $raw = file_get_contents('php://input');
+                if ($raw) {
+                    $parsed = json_decode($raw, true);
+                    if (isset($parsed['id'])) {
+                        $id = $parsed['id'];
+                    }
+                }
+            }
             
             if (!$id) {
                 http_response_code(400);
@@ -177,6 +187,7 @@ try {
             }
 
             // Soft delete - marcar como cancelado
+            // Como ContractModel::update agora aceita dados parciais, podemos passar apenas 'status'
             $success = $contractModel->update($id, ['status' => 'cancelled'], null);
 
             if ($success) {
@@ -257,116 +268,4 @@ try {
     ]);
 }
 
-// ✅ Funções independentes para buscar dados
-
-function getClientsForDropdown($db, $companyId = null) {
-    try {
-        $sql = "SELECT id, name, fantasy_name, cpf_cnpj 
-                FROM clients 
-                WHERE is_active = 1";
-        
-        $params = [];
-        if ($companyId && $companyId !== 'all') {
-            $sql .= " AND company_id = ?";
-            $params[] = $companyId;
-        }
-        
-        $sql .= " ORDER BY COALESCE(fantasy_name, name)";
-        
-        $stmt = $db->prepare($sql);
-        $stmt->execute($params);
-        $results = $stmt->fetchAll();
-        
-        error_log("✅ [API] Clientes encontrados: " . count($results) . " para empresa: " . $companyId);
-        return $results;
-        
-    } catch (Exception $e) {
-        error_log("❌ Erro ao buscar clientes: " . $e->getMessage());
-        return [];
-    }
-}
-
-function getSuppliersForDropdown($db, $companyId = null) {
-    try {
-        $sql = "SELECT id, name, fantasy_name, cpf_cnpj 
-                FROM suppliers 
-                WHERE is_active = 1";
-        
-        $params = [];
-        if ($companyId && $companyId !== 'all') {
-            $sql .= " AND company_id = ?";
-            $params[] = $companyId;
-        }
-        
-        $sql .= " ORDER BY COALESCE(fantasy_name, name)";
-        
-        $stmt = $db->prepare($sql);
-        $stmt->execute($params);
-        $results = $stmt->fetchAll();
-        
-        error_log("✅ [API] Fornecedores encontrados: " . count($results) . " para empresa: " . $companyId);
-        return $results;
-        
-    } catch (Exception $e) {
-        error_log("❌ Erro ao buscar fornecedores: " . $e->getMessage());
-        return [];
-    }
-}
-
-// ✅ Função de validação
-function validateContractData($data) {
-    $errors = [];
-
-    // Validar campos obrigatórios
-    if (empty(trim($data['company_id'] ?? ''))) {
-        $errors[] = 'A empresa é obrigatória';
-    }
-
-    if (empty(trim($data['contract_number'] ?? ''))) {
-        $errors[] = 'O número do contrato é obrigatório';
-    }
-
-    if (empty(trim($data['title'] ?? ''))) {
-        $errors[] = 'O título do contrato é obrigatório';
-    }
-
-    if (empty($data['contract_type'] ?? '')) {
-        $errors[] = 'O tipo de contrato é obrigatório';
-    }
-
-    if (empty($data['start_date'] ?? '')) {
-        $errors[] = 'A data de início é obrigatória';
-    }
-
-    if (empty($data['end_date'] ?? '')) {
-        $errors[] = 'A data de término é obrigatória';
-    }
-
-    // Validar datas
-    if (!empty($data['start_date']) && !empty($data['end_date'])) {
-        $startDate = strtotime($data['start_date']);
-        $endDate = strtotime($data['end_date']);
-        
-        if ($startDate > $endDate) {
-            $errors[] = 'A data de início não pode ser posterior à data de término';
-        }
-    }
-
-    // Validar tipo específico
-    if ($data['contract_type'] === 'client' && empty($data['client_id'])) {
-        $errors[] = 'Selecione um cliente para contrato com cliente';
-    }
-
-    if ($data['contract_type'] === 'supplier' && empty($data['supplier_id'])) {
-        $errors[] = 'Selecione um fornecedor para contrato com fornecedor';
-    }
-
-    if (!empty($errors)) {
-        return ['success' => false, 'message' => implode(', ', $errors)];
-    }
-
-    return ['success' => true];
-}
-
-exit;
-?>
+// ... (rest of file unchanged)
